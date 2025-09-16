@@ -1,0 +1,72 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: black;
+  position: relative;
+  z-index: 10000;
+
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+  
+}
+
+/* Estilo normal del menú (desktop) */
+.nav-links {
+  display: flex;
+  gap: 100px;
+  list-style: none;
+  margin: 0px 200px;
+  padding: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-family: poppins, sans-serif;
+  font-size: 14px;
+  
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Ícono burger oculto por defecto */
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger img {
+  height: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px; /* debajo del navbar */
+    right: 0;
+    background-color: black;
+    flex-direction: column;
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+    display: none; /* oculto por defecto */
+    border-radius: 15px;
+  }
+
+  .nav-links.active {
+    display: flex;  
+    ;
+  }
+
+  .burger {
+    display: block; /* aparece el ícono */
+  }
+}

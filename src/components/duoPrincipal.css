@@ -1,0 +1,52 @@
+.duo-container {
+    position: relative;
+    text-align: center;
+    color: white;
+    font-family: poppins, sans-serif;
+}
+
+.duo-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.duo-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.duo-text h2 {
+    color: #bd9453;
+    margin-bottom: 15px;
+}
+
+.duo-text h3 {
+    color: rgb(27, 27, 27);
+    margin-bottom: 10px;
+}
+
+.duo-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .duo-text {
+        position: static;
+        /* saca el absolute */
+        transform: none;
+        background: url(./imgs/backgroundGeneral.jpg);
+        /* fondo oscuro para legibilidad */
+        margin-top: -10px;
+        padding: 20px;
+        color: white;
+    }
+}

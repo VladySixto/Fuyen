@@ -1,0 +1,97 @@
+.musico-container {
+    display: flex;
+    align-items: flex-start;
+    background-color: #000000;
+    color: white;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.musico-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.musico-img {
+    width: 250px;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.musico-nombre-vertical {
+    position: absolute;
+    top: 20%;
+    left: 1200px;
+    writing-mode: vertical-rl;
+    /* letras verticales */
+    text-orientation: upright;
+    /* mantiene las letras derechas */
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    letter-spacing: 8px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.musico-descripcion {
+    flex: 1;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: justify;
+    margin-top: 250px;
+    max-width: 750px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .musico-container {
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        z-index: 0;
+    }
+
+    .musico-img-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 0;
+    }
+
+    .musico-nombre-vertical {
+    position: absolute;
+    max-width: 30px;
+    color: #ffffff;
+    }
+
+    .musico-nombre-vertical {
+        position: static;
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+        font-size: 3rem;
+        margin-top: 10px;
+        letter-spacing: 4px;
+        margin-left: 5px;
+        margin-top: 50px;
+        display: flex;
+        
+    }
+
+    .musico-descripcion {
+        margin-top: 10px;
+        margin-left: 20px;
+        text-align: justify;
+        max-width: 75%;
+    }
+
+    .musico-img {
+        width: 60%;
+        display: block;
+        z-index: 0;
+    }
+}

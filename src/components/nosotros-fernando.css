@@ -1,0 +1,70 @@
+.musico-grid {
+    display: grid;
+    grid-template-columns: min-content 1fr minmax(240px, 36vw);
+    grid-template-areas: "nombre descripcion foto";
+    align-items: center;
+    gap: clamp(16px, 3vw, 48px);
+    padding: clamp(16px, 4vw, 48px);
+    background: #000;
+    color: #fff;
+}
+
+/* Nombre vertical a la izquierda */
+.nombre {
+    grid-area: nombre;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-weight: 800;
+    letter-spacing: 0.5rem;
+    font-size: clamp(1.25rem, 2.2vw, 2.4rem);
+    align-self: stretch;
+    /* estira para alinear con la imagen */
+    display: flex;
+    justify-content: center;
+}
+
+/* Descripción en el centro */
+.descripcion {
+    grid-area: descripcion;
+    max-width: 60ch;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Imagen SIEMPRE a la derecha */
+.foto {
+    grid-area: foto;
+    justify-self: end;
+    width: clamp(220px, 32vw, 420px);
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    width: 300px;
+}
+
+/* 📱 Mobile: nombre + foto en la primera fila, descripción abajo */
+@media (max-width: 768px) {
+    .musico-grid {
+        grid-template-columns: min-content 1fr;
+        grid-template-areas:
+            "nombre foto"
+            "descripcion descripcion";
+    }
+
+    .nombre {
+        font-size: clamp(3rem, 5.5vw, 1.6rem);
+        font-family: poppins, sans-serif;
+        font-weight: bold;
+        letter-spacing: 0.4rem;
+    }
+
+    .foto {
+        width: min(55vw, 320px);
+    }
+
+    .descripcion {
+        max-width: 90%;
+        justify-self: center;
+        margin-top: 12px;
+    }
+}

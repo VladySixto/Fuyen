@@ -1,0 +1,59 @@
+.footer {
+    background: #0d0d0d;
+    /* negro profundo */
+    padding: 2rem 1rem 5rem;
+    text-align: center;
+    color: #bd9453;
+    /* dorado */
+    font-family: "Oswald", sans-serif;
+    /* misma tipografía que header */
+    border-top: 2px solid #bd9453;
+    
+}
+
+.footer-content {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    text-align: center;
+}
+
+.footer-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+    letter-spacing: 2px;
+    color: #bd9453;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.footer-icons img {
+    width: 34px;
+    height: 34px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(0.9) sepia(1) hue-rotate(10deg) saturate(2);
+    /* efecto dorado */
+}
+
+.footer-icons img:hover {
+    transform: scale(1.2);
+    filter: brightness(1.5) sepia(1) hue-rotate(10deg) saturate(3);
+}
+
+.footer-text {
+    font-size: 0.75rem;
+    color: #aaa;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}

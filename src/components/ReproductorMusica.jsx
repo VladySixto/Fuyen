@@ -2,43 +2,38 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './ReproductorMusica.css';
 import portadaDisco from "./imgs/portadaDisco.jpg";
+import guitarra from './audio/cuandolloramiguitarra.mp3';
+import calle from './audio/calleangosta.mp3';
+import morir from './audio/morirdeamor.mp3';
 
-const ReproductorMusica = () => {
-    const audioRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
-    const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
-    // Lista de canciones (puedes cargarla desde una API o JSON)
-    const canciones = [
-        {
-            id: 1,
-            titulo: 'Cuando llora mi guitarra',
-            artista: 'Fuyen',
-            duracion: '3:22',
-            src: '/audio/cuandolloramiguitarra.mp3',
-            portada: portadaDisco,
-        },
-        {
-            id: 2,
-            titulo: 'Calle Angosta',
-            artista: 'Fuyen',
-            duracion: '3:05',
-            src: '/audio/calleangosta.mp3',
-            portada: portadaDisco,
-        },
-        {
-            id: 3,
-            titulo: 'Morir de amor',
-            artista: 'Fuyen',
-            duracion: '2:54',
-            src: '/audio/morirdeamor.mp3',
-            portada: portadaDisco,
-        },
-    ];
+const canciones = [
+{
+    id: 1,
+    titulo: 'Cuando llora mi guitarra',
+    artista: 'Fuyen',
+    duracion: '3:22',
+    src: guitarra,
+    portada: portadaDisco,
+},
+{
+    id: 2,
+    titulo: 'Calle Angosta',
+    artista: 'Fuyen',
+    duracion: '3:05',
+    src: calle,
+    portada: portadaDisco,
+},
+{
+    id: 3,
+    titulo: 'Morir de amor',
+    artista: 'Fuyen',
+    duracion: '2:54',
+    src: morir,
+    portada: portadaDisco,
+},
+];
 
-    const currentSong = canciones[currentSongIndex];
 
     // Actualizar tiempo y duración del audio
     useEffect(() => {

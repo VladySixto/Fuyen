@@ -7,10 +7,10 @@ export default function NosotrosMusicosFernando() {
         <section className="musico-grid">
             <div className="nombre">FERNANDO</div>
             <p className="descripcion">
-                Fernando es un talentoso músico y compositor argentino, conocido por su
-                habilidad en la guitarra y su voz cautivadora. Nacido en Buenos Aires,
-                comenzó su carrera musical a una edad temprana, influenciado por el
-                folclore tradicional y la música popular de su país...
+                Fernando es un músico y compositor cuya identidad se construye a 
+                partir de la guitarra y una voz profunda y expresiva. Nacido en Buenos Aires, 
+                comenzó su recorrido musical 
+                a temprana edad, marcado por el folclore y la música popular de su país.
             </p>
             <img className="foto" src={NosotrosFernando} alt="Fernando" />
         </section>

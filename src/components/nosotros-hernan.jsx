@@ -11,10 +11,11 @@ function NosotrosMusicosHernan() {
             </div>
 
             <p className="musico-descripcion">
-                Hernan es un talentoso músico y compositor argentino, conocido por su
-                habilidad en la guitarra y su voz cautivadora. Nacido en Buenos Aires,
-                comenzó su carrera musical a una edad temprana, influenciado por el
-                folclore tradicional y la música popular de su país...
+                Hernán es guitarrista y parte fundamental del dúo,
+                 aportando una guitarra expresiva y precisa que sostiene la 
+                 base rítmica y musical del proyecto. Su formación está atravesada
+                  por el folclore y la música popular argentina, construyendo un 
+                  sonido que equilibra tradición y personalidad.
             </p>
         </div>
 

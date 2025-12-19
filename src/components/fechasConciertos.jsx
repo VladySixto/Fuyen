@@ -57,7 +57,8 @@ function FechasConciertos() {
                 ))}
             </div>
 
-            <button className="btn-fechas">VER TODAS LAS PRÓXIMAS FECHAS!</button>
+            <a href="/fechasYeventos">  <button className="btn-fechas" >VER TODAS LAS PRÓXIMAS FECHAS!</button></a>
+
         </section>
     );
 }

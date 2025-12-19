@@ -214,6 +214,7 @@
     border-radius: 2px;
     outline: none;
     -webkit-appearance: none;
+    
 }
 
 .progress-bar::-webkit-slider-thumb {
@@ -223,6 +224,7 @@
     border-radius: 50%;
     background-color: #bd9453;
     cursor: pointer;
+    color: #bd9453;
 }
 
 .time {

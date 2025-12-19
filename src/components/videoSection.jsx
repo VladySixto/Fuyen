@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./videoSection.css";
 import portadaDisco from "./imgs/portadaDisco.jpg";
-import spotifyIcon from "./imgs/spotify-icon.png";
 
 
 
@@ -55,7 +54,7 @@ function VideoSection() {
                         <img src={video.img} alt={video.title} />
                         <h3>{video.title}</h3>
                         <div className="Spotify-icon-card">
-                        <img src={spotifyIcon} alt="icono Spotify"/>
+                        
                         </div>
                     </div>
                 ))}

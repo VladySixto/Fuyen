@@ -11,10 +11,10 @@ function DuoPrincipal() {
       <div className="duo-text">
         <h2>QUIENES SOMOS</h2>
         <p>
-          Fuyén es un dúo o grupo de músicos oriundos de Dolores, Provincia de
-          Buenos Aires, especializado en folclore tradicional argentino. Su
-          repertorio incluye chamamé, chacareras y estilos populares urbanos del
-          interior, adaptados a los gustos contemporáneos.
+          Fuyén es un dúo musical oriundo de Dolores, provincia de Buenos Aires, 
+          dedicado al folclore argentino. Nuestra propuesta recorre géneros como el chamamé,
+           la chacarera y otras expresiones populares del interior del país, combinando
+            el respeto por la tradición con una mirada actual.
         </p>
       </div>
     </div>

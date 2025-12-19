@@ -33,7 +33,7 @@ const ReproductorMusica = () => {
             titulo: 'Morir de amor',
             artista: 'Fuyen',
             duracion: '2:54',
-            src: '/audio/Cuando-llora-mi-guitarra.mp3',
+            src: '/audio/morir-de-amor.mp3',
             portada: portadaDisco,
         },
     ];
@@ -120,7 +120,12 @@ const ReproductorMusica = () => {
                     <h2>{currentSong.titulo}</h2>
                     <p className="artist">{currentSong.artista}</p>
                     <p className="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        El disco de Fuyén es un recorrido por las raíces del folclore argentino,
+                         donde la tradición dialoga con una mirada contemporánea.
+                          A través de guitarras, voces y arreglos sensibles, el álbum 
+                          propone un viaje sonoro que transita el chamamé, la chacarera 
+                          y otros ritmos del interior, poniendo en primer plano la emoción y la
+                           identidad musical del grupo.
                     </p>
                 </div>
             </div>

@@ -1,10 +1,17 @@
 .body-img-principal {
-  height: 100%;
   width: 100%;
+  height: 100vh;            /* ocupa toda la pantalla */
   background: url(./imgs/backgroundGeneral.jpg);
+  overflow: hidden;
 }
 
+.body-img-principal picture,
 .body-img-principal img {
   width: 100%;
   height: 100%;
+}
+
+.body-img-principal img {
+  object-fit: cover;        /* 🔥 clave */
+  display: block;
 }

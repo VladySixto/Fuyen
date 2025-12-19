@@ -17,7 +17,7 @@ const ReproductorMusica = () => {
             titulo: 'Cuando llora mi guitarra',
             artista: 'Fuyen',
             duracion: '3:22',
-            src: '/audio/Cuando-Llora-Mi-Guitarra.mp3',
+            src: '/audio/cuandolloramiguitarra.mp3',
             portada: portadaDisco,
         },
         {
@@ -25,7 +25,7 @@ const ReproductorMusica = () => {
             titulo: 'Calle Angosta',
             artista: 'Fuyen',
             duracion: '3:05',
-            src: '/audio/Calle-angosta.mp3',
+            src: '/audio/calleangosta.mp3',
             portada: portadaDisco,
         },
         {
@@ -33,7 +33,7 @@ const ReproductorMusica = () => {
             titulo: 'Morir de amor',
             artista: 'Fuyen',
             duracion: '2:54',
-            src: '/audio/morir-de-amor.mp3',
+            src: '/audio/morirdeamor.mp3',
             portada: portadaDisco,
         },
     ];

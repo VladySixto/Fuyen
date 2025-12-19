@@ -1,48 +1,57 @@
-// src/components/ReproductorMusica.js
 import React, { useRef, useState, useEffect } from 'react';
 import './ReproductorMusica.css';
-import portadaDisco from "./imgs/portadaDisco.jpg";
+import portadaDisco from './imgs/portadaDisco.jpg';
+
 import guitarra from './audio/cuandolloramiguitarra.mp3';
 import calle from './audio/calleangosta.mp3';
 import morir from './audio/morirdeamor.mp3';
 
-
 const canciones = [
-{
-    id: 1,
-    titulo: 'Cuando llora mi guitarra',
-    artista: 'Fuyen',
-    duracion: '3:22',
-    src: guitarra,
-    portada: portadaDisco,
-},
-{
-    id: 2,
-    titulo: 'Calle Angosta',
-    artista: 'Fuyen',
-    duracion: '3:05',
-    src: calle,
-    portada: portadaDisco,
-},
-{
-    id: 3,
-    titulo: 'Morir de amor',
-    artista: 'Fuyen',
-    duracion: '2:54',
-    src: morir,
-    portada: portadaDisco,
-},
+    {
+        id: 1,
+        titulo: 'Cuando llora mi guitarra',
+        artista: 'Fuyen',
+        duracion: '3:22',
+        src: guitarra,
+        portada: portadaDisco,
+    },
+    {
+        id: 2,
+        titulo: 'Calle Angosta',
+        artista: 'Fuyen',
+        duracion: '3:05',
+        src: calle,
+        portada: portadaDisco,
+    },
+    {
+        id: 3,
+        titulo: 'Morir de amor',
+        artista: 'Fuyen',
+        duracion: '2:54',
+        src: morir,
+        portada: portadaDisco,
+    },
 ];
 
+const ReproductorMusica = () => {
+    const audioRef = useRef(null);
 
-    // Actualizar tiempo y duración del audio
+    const [currentSongIndex, setCurrentSongIndex] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    const currentSong = canciones[currentSongIndex];
+
+    /* ---------------- AUDIO EVENTS ---------------- */
+
     useEffect(() => {
         const audio = audioRef.current;
         if (!audio) return;
 
         const updateTime = () => setCurrentTime(audio.currentTime);
         const updateDuration = () => setDuration(audio.duration || 0);
-        const handleEnded = () => siguiente(); // siguiente al terminar
+        const handleEnded = () => siguiente();
 
         audio.addEventListener('timeupdate', updateTime);
         audio.addEventListener('loadedmetadata', updateDuration);
@@ -55,9 +64,23 @@ const canciones = [
         };
     }, [currentSongIndex]);
 
-    // Play / Pause
+    /* -------- FORCE RELOAD & PLAY ON SONG CHANGE -------- */
+
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        audio.load();
+        audio.play().catch(() => {});
+        setIsPlaying(true);
+    }, [currentSongIndex]);
+
+    /* ---------------- CONTROLS ---------------- */
+
     const togglePlayPause = () => {
         const audio = audioRef.current;
+        if (!audio) return;
+
         if (isPlaying) {
             audio.pause();
         } else {
@@ -66,34 +89,32 @@ const canciones = [
         setIsPlaying(!isPlaying);
     };
 
-    // Cambiar canción
     const cambiarCancion = (index) => {
         const audio = audioRef.current;
-        audio.pause();
+        if (audio) audio.pause();
+
         setCurrentSongIndex(index);
-        setIsPlaying(false);
     };
 
-    // Siguiente y anterior
     const siguiente = () => {
-        const nextIndex = (currentSongIndex + 1) % canciones.length;
-        cambiarCancion(nextIndex);
+        setCurrentSongIndex((prev) => (prev + 1) % canciones.length);
     };
 
     const anterior = () => {
-        const prevIndex = (currentSongIndex - 1 + canciones.length) % canciones.length;
-        cambiarCancion(prevIndex);
+        setCurrentSongIndex((prev) =>
+            prev === 0 ? canciones.length - 1 : prev - 1
+        );
     };
 
-    // Control de progreso
     const handleProgressChange = (e) => {
-        const newTime = parseFloat(e.target.value);
         const audio = audioRef.current;
+        const newTime = Number(e.target.value);
+
+        if (!audio) return;
         audio.currentTime = newTime;
         setCurrentTime(newTime);
     };
 
-    // Formato de tiempo: 2:30
     const formatTime = (time) => {
         if (isNaN(time)) return '0:00';
         const minutes = Math.floor(time / 60);
@@ -101,101 +122,69 @@ const canciones = [
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     };
 
+    /* ---------------- RENDER ---------------- */
+
     return (
         <div className="reproductor-container">
-            {/* Encabezado */}
             <header className="header">
                 <h1>Fuyen (Disco 2011)</h1>
             </header>
 
-            {/* Sección principal: portada + info */}
             <div className="album-section">
-                <img src={currentSong.portada} alt="Portada del álbum" className="album-cover" />
+                <img
+                    src={currentSong.portada}
+                    alt="Portada"
+                    className="album-cover"
+                />
                 <div className="album-info">
                     <h2>{currentSong.titulo}</h2>
                     <p className="artist">{currentSong.artista}</p>
-                    <p className="description">
-                        El disco de Fuyén es un recorrido por las raíces del folclore argentino,
-                         donde la tradición dialoga con una mirada contemporánea.
-                          A través de guitarras, voces y arreglos sensibles, el álbum 
-                          propone un viaje sonoro que transita el chamamé, la chacarera 
-                          y otros ritmos del interior, poniendo en primer plano la emoción y la
-                           identidad musical del grupo.
-                    </p>
                 </div>
             </div>
 
-            {/* Lista de canciones */}
             <div className="playlist">
                 <h3>Lista de canciones</h3>
                 {canciones.map((song, index) => (
                     <div
                         key={song.id}
-                        className={`playlist-item ${index === currentSongIndex ? 'active' : ''}`}
+                        className={`playlist-item ${
+                            index === currentSongIndex ? 'active' : ''
+                        }`}
                         onClick={() => cambiarCancion(index)}
                     >
-                        <img src={song.portada} alt="Portada" className="playlist-cover" />
-                        <div className="playlist-details">
-                            <span className="title">{song.titulo}</span>
-                            <span className="artist">{song.artista}</span>
-                        </div>
-                        <span className="duration">{song.duracion}</span>
+                        <span>{song.titulo}</span>
+                        <span>{song.duracion}</span>
                     </div>
                 ))}
             </div>
 
-            {/* Mini player fijo en la parte inferior (responsivo) */}
             <div className="mini-player">
-                <img src={currentSong.portada} alt="Mini portada" className="mini-cover" />
-                <div className="mini-info">
-                    <p className="mini-title">{currentSong.titulo}</p>
-                    <p className="mini-artist">{currentSong.artista}</p>
-                </div>
+                <button onClick={anterior}>⏮</button>
+                <button onClick={togglePlayPause}>
+                    {isPlaying ? '⏸' : '▶'}
+                </button>
+                <button onClick={siguiente}>⏭</button>
 
-                <div className="mini-controls">
-                    <button onClick={anterior} className="control-btn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                            <path d="M15 19L9 13L15 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </button>
-                    <button onClick={togglePlayPause} className="play-btn">
-                        {isPlaying ? (
-                            <svg width="20" height="20" viewBox="0 0 24 24">
-                                <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor" />
-                                <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor" />
-                            </svg>
-                        ) : (
-                            <svg width="20" height="20" viewBox="0 0 24 24">
-                                <path d="M5 3L19 12L5 21V3Z" fill="currentColor" />
-                            </svg>
-                        )}
-                    </button>
-                    <button onClick={siguiente} className="control-btn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                            <path d="M9 7L15 13L9 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </button>
-                </div>
+                <input
+                    type="range"
+                    min="0"
+                    max={duration || 100}
+                    value={currentTime}
+                    onChange={handleProgressChange}
+                />
 
-                {/* Barra de progreso y volumen (ocultos en mobile pequeño, visibles en tablets+) */}
-                <div className="mini-progress">
-                    <input
-                        type="range"
-                        min="0"
-                        max={duration || 100}
-                        value={currentTime}
-                        onChange={handleProgressChange}
-                        className="progress-bar"
-                    />
-                    <div className="time">
-                        <span>{formatTime(currentTime)}</span>
-                        <span> / {formatTime(duration)}</span>
-                    </div>
-                </div>
+                <span>
+                    {formatTime(currentTime)} / {formatTime(duration)}
+                </span>
             </div>
 
-            {/* Audio oculto */}
-            <audio ref={audioRef} src={currentSong.src} />
+            {/* 🔑 CLAVE ABSOLUTA */}
+            <audio
+                key={currentSong.src}
+                ref={audioRef}
+                src={currentSong.src}
+                preload="metadata"
+            />
         </div>
     );
 };
